@@ -2,4 +2,5 @@
 
 var config = require('./config');
 
-console.log(config);
+TweenMax.to(".nyan-cat", 2, {left: 600});
+console.log('hmm');
