@@ -1,8 +1,23 @@
 html, body
   height 100%
   overflow hidden
+  background-color black
+
+.text-container
+  position absolute
+  top 40%
+  left 30%
+
+  .text
+    color white
+
+  #text2
+    position absolute
+    top 0
+
 
 .container
+  opacity 0
   height 100%
   background-image url('../images/large-star-scape.jpg')
   background-repeat
@@ -11,13 +26,20 @@ html, body
   position relative
   top 50%
   left 0
-  transform rotate(-10 deg)
+  transform rotate(-8 deg)
   height 80px
   color white
 
+.pizza
+  display none
+  position absolute
+  height 170px
+  top 20%
+  right 10%
+  transform skewY(-12deg) skewX(40deg)
+
 .comet
   position absolute
-  clear both
 
 .comet1
   left 1100px
