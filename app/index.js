@@ -1,3 +1,4 @@
+//jscs:disable maximumLineLength
 'use strict';
 
 var config = require('./config');
@@ -9,6 +10,7 @@ var comet2 = document.getElementsByClassName('comet2');
 var pizza = document.getElementsByClassName('pizza');
 var text1 = document.getElementById('text1');
 var text2 = document.getElementById('text2');
+var textContainer = document.getElementsByClassName('text-container');
 
 var spaceTween = TweenMax.to(space, 35, {backgroundPosition: '-100% 73%', repeat: -1, repeatDelay: -1, ease: Linear.easeNone});
 var nyanTween = TweenMax.to(nyan, 10, {x: 600, y: -100});
@@ -17,10 +19,11 @@ var comet2Tween = TweenMax.to(comet2, 1, {x: -1300, y: 400, opacity: 1, repeat: 
 
 var tl = new TimelineMax();spaceTween;
 
-tl.from(text1, 3, {opacity:0})
-  .to(text1, 1, {opacity: 0})
-  .from(text2, 3, {opacity: 0})
-  .to(text2, 1, {opacity: 0})
+tl.to(textContainer, 0.25, {opacity: 1}, 0)
+  .from(text1, 4, {opacity:0})
+  .to(text1, 1.5, {opacity: 0})
+  .from(text2, 4, {opacity: 0})
+  .to(text2, 1.5, {opacity: 0})
   .to(space, 2, {opacity: 1})
   .append(nyanTween, -2)
   .insert(comet1Tween, 0)
