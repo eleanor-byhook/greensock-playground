@@ -43,24 +43,37 @@ html, body
     width 1976px
     height 1308px
     background-repeat no-repeat
+    font-color black
+    font-size 100px
     //background-repeat cover
 
   #background1
     left 0
     top 0
+    width 200%
+    //background red
+    opacity 0.6
     background url('../images/large-star-scape.jpg')
     background-repeat repeat
+    z-index 11
 
   #background2
-    left 1976px
+    left 0
     top 0
+    width 200%
+    //background blue
+    opacity 0.5
+    z-index 10
     background url('../images/large-star-scape.jpg')
     background-repeat repeat
 
   #background3
-    left 3952px
+    left 0
     top 0
-    background blue//url('../images/large-star-scape.jpg')
+    width 400%
+    z-index 9
+    //background green
+    background url('../images/large-star-scape.jpg')
     background-repeat repeat
 
 .nyan-cat
@@ -71,7 +84,7 @@ html, body
   //transform rotate(-1 deg)
   height 80px
   color white
-  z-index 9
+  z-index 20
 
 .pizza
   display none
