@@ -1,5 +1,4 @@
 html, body
-  width 150%
   height 100%
   overflow hidden
   background-color black
@@ -26,19 +25,51 @@ html, body
     width 300px
     padding 0
 
-.container
+.background-container
+  position absolute
+  width 1976px
+  height 1308px
+  top 0
+  left 0
   opacity 1
-  height 100%
-  background-image url('../images/spacetile.jpg')
-  background-repeat cover
+  float left
+  overflow hidden
+  //background-image url('../images/large-star-scape.jpg')
+
+  .background
+    position absolute
+    float left
+    width 1976px
+    height 1308px
+    background-repeat no-repeat
+    //background-repeat cover
+
+  #background1
+    left 0
+    top 0
+    background url('../images/large-star-scape.jpg')
+    background-repeat repeat
+
+  #background2
+    left 1976px
+    top 0
+    background url('../images/large-star-scape.jpg')
+    background-repeat repeat
+
+  #background3
+    left 3952px
+    top 0
+    background blue//url('../images/large-star-scape.jpg')
+    background-repeat repeat
 
 .nyan-cat
-  position relative
+  position absolute
   top 40%
   left 10%
   //transform rotate(-1 deg)
   height 80px
   color white
+  z-index 1000
 
 .pizza
   display none
