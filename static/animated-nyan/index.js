@@ -463,7 +463,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,408.3,326.7);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(23).call(this.frame_23));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(23).call(this.frame_23).wait(1).call(this.frame_24).wait(15).call(this.frame_39).wait(21).call(this.frame_60).wait(1));
 
 	// mc_cat_head
 	this.head = new lib.mc_cat_head();
