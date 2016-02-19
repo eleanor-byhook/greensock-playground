@@ -21,6 +21,11 @@ var textContainer = $('.text-container');
 var mouseX = nyan.offset().left;
 var mouseY = nyan.offset().top;
 
+var SPEED = 8; //Speed of space flight
+var BOOST_SPEED = 4;
+
+console.log(SPEED);
+
 $(document).on('mousemove', function (e) {
   mouseX = e.pageX;
   mouseY = e.pageY;
@@ -30,17 +35,17 @@ $(document).on('mousemove', function (e) {
 
 //fast
 var left1 = background1.position().left;
-TweenMax.to(background1, 7, {
+var fastSpace = TweenMax.to(background1, SPEED, {
   css: {left: left1 - 1976},
   repeatDelay: 0,
   useFrames: false,
   ease: Linear.easeNone,
   repeat: -1
 });
-
+console.log('post-tween: ' + SPEED);
 //medium
 var left2 = background2.position().left;
-TweenMax.to(background2, 14, {
+var mediumSpace = TweenMax.to(background2, (SPEED*2), {
   css: {left: left2 - 1976},
   repeatDelay: 0,
   useFrames: false,
@@ -50,13 +55,32 @@ TweenMax.to(background2, 14, {
 
 //slow
 var left3 = background3.position().left;
-TweenMax.to(background3, 28, {
+var slowSpace = TweenMax.to(background3, (SPEED*4), {
   css: {left: left3 - 1976},
   repeatDelay: 0,
   useFrames: false,
   ease: Linear.easeNone,
   repeat: -1
 });
+
+var boost = function(speed) {
+  fastSpace.timeScale(speed);
+  mediumSpace.timeScale(speed);
+  slowSpace.timeScale(speed);
+};
+
+$(document).keydown(function(e) {
+  if(e.keyCode === 32) {
+    boost(BOOST_SPEED);
+  }
+});
+
+$(document).keyup(function(e) {
+  if(e.keyCode === 32) {
+    boost(SPEED/4)
+  }
+});
+
 
 /* Comets */
 var comet1Tween = TweenMax.to(comet1, 1, {
