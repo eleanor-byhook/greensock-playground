@@ -82,14 +82,15 @@ var comet2Tween = TweenMax.to(comet2, 1, {
 
 /* Intro - two text panels, switch to space view, show nyan and comets */
 var tl = new TimelineMax();
-//.to(textContainer, 1, {opacity: 0})
-tl.to(textContainer, 1, {opacity: 1}, 0)
-  .from(text1, 2, {opacity:0})
-  .to(text1, 0.5, {opacity: 0})
-  .from(text2, 2, {opacity: 0})
-  .to(text2, 0.5, {opacity: 0})
-  .to(space, 1, {opacity: 1})
-  .to(nyan, 1, {display: 'inline'})
+//
+tl.to(textContainer, 0.1, {opacity: 0})
+  //.to(textContainer, 1, {opacity: 1}, 0)
+  //.from(text1, 2, {opacity:0})
+  //.to(text1, 0.5, {opacity: 0})
+  //.from(text2, 2, {opacity: 0})
+  //.to(text2, 0.5, {opacity: 0})
+  .to(space, 0.1, {opacity: 1})
+  .to(nyan, 0.1, {display: 'inline'})
   .append([comet1Tween, comet2Tween]);
 
 
