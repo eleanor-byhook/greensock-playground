@@ -5,10 +5,28 @@
   <title></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="css/index.css">
+  <script src="../animated-nyan/bundle.js"></script>
+  <script src="../animated-nyan/index.js"></script>
+  <script>
+    var canvas, stage, exportRoot;
+
+    function init() {
+      canvas = document.getElementById("canvas");
+      canvas.width = canvas.parentNode.clientWidth+1400;
+      canvas.height = canvas.parentNode.clientHeight +600;
+      exportRoot = new lib.index();
+
+      stage = new createjs.Stage(canvas);
+      stage.addChild(exportRoot);
+      stage.update();
+
+      createjs.Ticker.setFPS(lib.properties.fps);
+      createjs.Ticker.addEventListener("tick", stage);
+    }
+  </script>
 </head>
-<body>
+<body onload="init();">
 <div class="text-container">
   <div class="text" id="text1">
     <h1>They told me I could be anything</h1>
@@ -23,7 +41,10 @@
 <img class="comet comet4" src="images/comet.png"/>
 <img class="comet comet5" src="images/comet.png"/>
 
-<img class="nyan-cat" src="images/nyan-cat.png"/>
+<div class="nyan-cat">
+  <canvas id="canvas" style="background: transparent"></canvas>
+</div>
+
 <img class="pizza" src="images/pizza.png"/>
 
 <div class="background-container">
