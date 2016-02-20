@@ -23,6 +23,7 @@
 
       createjs.Ticker.setFPS(lib.properties.fps);
       createjs.Ticker.addEventListener("tick", stage);
+
     }
   </script>
 </head>
@@ -44,7 +45,9 @@
 <div class="nyan-cat">
   <canvas id="canvas" style="background: transparent"></canvas>
 </div>
-
+<div class="instructions" id="press_space">
+  <h1>Press [space] for hyper speed</h1>
+</div>
 <img class="pizza" src="images/pizza.png"/>
 
 <div class="background-container">

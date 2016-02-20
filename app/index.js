@@ -16,10 +16,17 @@ var comet2 = $('.comet2');
 var pizza = $('.pizza');
 var text1 = $('#text1');
 var text2 = $('#text2');
+var press_space = $('#press_space');
 var textContainer = $('.text-container');
 
-var mouseX = nyan.offset().left;
-var mouseY = nyan.offset().top;
+var mouseX = nyan.offset().left + 600;
+var mouseY = nyan.offset().top + 350;
+var SPEED = 8; //Speed of space flight
+var BOOST_SPEED = 4;
+
+$(window).load( function () {
+  window.cat.parent.frame_227(); //suppresses the full animation to only show "default" mode and not boost mode.
+})
 
 $(document).on('mousemove', function (e) {
   mouseX = e.pageX;
@@ -30,7 +37,7 @@ $(document).on('mousemove', function (e) {
 
 //fast
 var left1 = background1.position().left;
-TweenMax.to(background1, 7, {
+var fastSpace = TweenMax.to(background1, SPEED, {
   css: {left: left1 - 1976},
   repeatDelay: 0,
   useFrames: false,
@@ -40,7 +47,7 @@ TweenMax.to(background1, 7, {
 
 //medium
 var left2 = background2.position().left;
-TweenMax.to(background2, 14, {
+var mediumSpace = TweenMax.to(background2, (SPEED*2), {
   css: {left: left2 - 1976},
   repeatDelay: 0,
   useFrames: false,
@@ -50,13 +57,37 @@ TweenMax.to(background2, 14, {
 
 //slow
 var left3 = background3.position().left;
-TweenMax.to(background3, 28, {
+var slowSpace = TweenMax.to(background3, (SPEED*4), {
   css: {left: left3 - 1976},
   repeatDelay: 0,
   useFrames: false,
   ease: Linear.easeNone,
   repeat: -1
 });
+
+var boost = function(speed) {
+  fastSpace.timeScale(speed);
+  mediumSpace.timeScale(speed);
+  slowSpace.timeScale(speed);
+};
+
+/* Boost actions */
+
+$(document).keydown(function(e) {
+  if(e.keyCode === 32) {
+    boost(BOOST_SPEED);
+    window.cat.frame_24(); //cat head
+    window.cat.frame_39(); // cat tail boost
+  }
+});
+
+$(document).keyup(function(e) {
+  if(e.keyCode === 32) {
+    window.cat.frame_60(); //reset to default state
+    boost(SPEED/4)
+  }
+});
+
 
 /* Comets */
 var comet1Tween = TweenMax.to(comet1, 1, {
@@ -79,18 +110,24 @@ var comet2Tween = TweenMax.to(comet2, 1, {
   repeatDelay: 2.5,
   ease: Linear.easeNone
 });
+/* Instructions */
+var tl2 = new TimelineMax();
+
+tl2.to(press_space, 2, {display: 'inline', opacity: 1}, 0)
+  .to(press_space, 4, {opacity: 0});
+
 
 /* Intro - two text panels, switch to space view, show nyan and comets */
 var tl = new TimelineMax();
-//.to(textContainer, 1, {opacity: 0})
+//.to(textContainer, 0.1, {opacity: 0})
 tl.to(textContainer, 1, {opacity: 1}, 0)
   .from(text1, 2, {opacity:0})
   .to(text1, 0.5, {opacity: 0})
-  .from(text2, 2, {opacity: 0})
+  .from(text2, 2.25, {opacity: 0})
   .to(text2, 0.5, {opacity: 0})
-  .to(space, 1, {opacity: 1})
-  .to(nyan, 1, {display: 'inline'})
-  .append([comet1Tween, comet2Tween]);
+  .to(space, 0.1, {opacity: 1})
+  .to(nyan, 0.1, {display: 'inline'})
+  .append([comet1Tween, comet2Tween, tl2]);
 
 
 /* Mouse handling events -  set new location based on mouse hover */
@@ -101,6 +138,8 @@ var loop = setInterval(function () {
   newY += (mouseY - newY) / 3;
   nyan.css({left: newX, top: newY});
 }, 30);
+
+
 
 /* TODO nyancat rotation based on mouse location
  function mouse(event) {

@@ -445,6 +445,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,408.3,326.7);
 (lib.mc_catContainer = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{"default":0,"boost":24,boostLoop:33,toDefault:54});
 
+  window.cat = this;
 	// timeline functions:
 	this.frame_0 = function() {
 		this.head.gotoAndStop("default");
