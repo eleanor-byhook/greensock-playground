@@ -18,6 +18,7 @@ var text1 = $('#text1');
 var text2 = $('#text2');
 var press_space = $('#press_space');
 var textContainer = $('.text-container');
+var musicControls = $('.audio');
 
 var mouseX = nyan.offset().left + 600;
 var mouseY = nyan.offset().top + 350;
@@ -110,12 +111,12 @@ var comet2Tween = TweenMax.to(comet2, 1, {
   repeatDelay: 2.5,
   ease: Linear.easeNone
 });
-/* Instructions */
+/* Instructions and music controls */
 var tl2 = new TimelineMax();
 
-tl2.to(press_space, 2, {display: 'inline', opacity: 1}, 0)
+tl2.to(musicControls, 1, {display: 'inline'})
+  .to(press_space, 2, {display: 'inline', opacity: 1}, 0)
   .to(press_space, 4, {opacity: 0});
-
 
 /* Intro - two text panels, switch to space view, show nyan and comets */
 var tl = new TimelineMax();
