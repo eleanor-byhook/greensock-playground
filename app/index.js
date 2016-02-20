@@ -18,13 +18,15 @@ var text1 = $('#text1');
 var text2 = $('#text2');
 var textContainer = $('.text-container');
 
-var mouseX = nyan.offset().left;
-var mouseY = nyan.offset().top;
-
+var mouseX = nyan.offset().left + 600;
+var mouseY = nyan.offset().top + 350;
 var SPEED = 8; //Speed of space flight
 var BOOST_SPEED = 4;
 
-console.log(SPEED);
+$(window).load( function () {
+  window.cat.parent.frame_227();
+  console.log(window.cat);
+})
 
 $(document).on('mousemove', function (e) {
   mouseX = e.pageX;
@@ -42,7 +44,7 @@ var fastSpace = TweenMax.to(background1, SPEED, {
   ease: Linear.easeNone,
   repeat: -1
 });
-console.log('post-tween: ' + SPEED);
+
 //medium
 var left2 = background2.position().left;
 var mediumSpace = TweenMax.to(background2, (SPEED*2), {
@@ -72,11 +74,14 @@ var boost = function(speed) {
 $(document).keydown(function(e) {
   if(e.keyCode === 32) {
     boost(BOOST_SPEED);
+    window.cat.frame_24(); //cat head
+    window.cat.frame_39(); // cat tail boost
   }
 });
 
 $(document).keyup(function(e) {
   if(e.keyCode === 32) {
+    window.cat.frame_60(); //reset to default state
     boost(SPEED/4)
   }
 });
