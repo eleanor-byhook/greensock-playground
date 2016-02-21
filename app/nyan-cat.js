@@ -12,7 +12,7 @@ $(window).load( function () {
   window.cat.parent.frame_227();
 });
 
-/* Mouse handling events -  set new location based on mouse hov er */
+/* Mouse handling events -  set new location based on mouse hover */
 
 $(document).on('mousemove', function (e) {
   mouseX = e.pageX;

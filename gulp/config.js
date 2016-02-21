@@ -48,7 +48,7 @@ var config = {
       entry: './app/index.js'
     },
     vendor: {
-      src: './app/vendor/**/*.js'
+      src: './app/vendor/*.js'
     },
     tests: {
       src: './tests/**/*.js'
