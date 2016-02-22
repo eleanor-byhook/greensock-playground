@@ -59,7 +59,7 @@ tl3.insert(pizza.pizzaTween)
 /* Intro - two text panels, switch to space view, show nyan and comets */
 
 var tl = new TimelineMax();
-//tl.to(text.textContainer, 0.1, {opacity: 0})
+//.to(text.textContainer, 0.1, {opacity: 0})
 tl.to(text.textContainer, 1, {opacity: 1}, 0)
   .from(text.text1, 2, {opacity:0})
   .to(text.text1, 0.5, {opacity: 0})
