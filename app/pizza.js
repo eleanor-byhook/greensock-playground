@@ -6,7 +6,7 @@ var pizza1 = $('#pizza1');
 var pizzaTween = TweenMax.to(pizza1, 2, {
     display: 'inline',
     x: -1800,
-    y: (Math.random() * -1000),
+    y: -85,
     repeat: -1,
     ease: Linear.easeNone
   });

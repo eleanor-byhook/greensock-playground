@@ -1,6 +1,5 @@
 //jscs:disable maximumLineLength
 //jscs:disable disallowMultipleLineBreaks
-
 'use strict';
 
 var config = require('./config');
@@ -12,6 +11,7 @@ var nyan = require('./nyan-cat.js');
 var pizza = require('./pizza.js');
 var collisions = require('./collisions.js');
 var musicControls = $('.audio');
+var score = $('#score');
 
 var SPEED = 8; //Speed of space flight
 var BOOST_SPEED = 4;
@@ -45,11 +45,11 @@ $(document).keyup(function(e) {
 /* Instructions and music controls */
 
 var tl2 = new TimelineMax();
-tl2.to(musicControls, 1, {display: 'inline'})
+tl2.to([score,musicControls], 1, {display: 'inline'})
   .to(text.press_space, 2, {display: 'inline', opacity: 1}, 0)
   .to(text.press_space, 4, {opacity: 0});
 
- /* Flying pizza action */
+/* Flying pizza action */
 
 var tl3 = new TimelineMax();
 tl3.insert(pizza.pizzaTween);
@@ -57,13 +57,14 @@ tl3.insert(pizza.pizzaTween);
 /* Intro - two text panels, switch to space view, show nyan and comets */
 
 var tl = new TimelineMax();
-tl.to(text.textContainer, 0.1, {opacity: 0})
-//.to(text.textContainer, 1, {opacity: 1}, 0)
-  //.from(text.text1, 2, {opacity:0})
-  //.to(text.text1, 0.5, {opacity: 0})
-  //.from(text.text2, 3, {opacity: 0})
-  //.to(text.text2, 0.5, {opacity: 0})
+//.to(text.textContainer, 0.1, {opacity: 0})
+tl.to(text.textContainer, 1, {opacity: 1}, 0)
+  .from(text.text1, 2, {opacity:0})
+  .to(text.text1, 0.5, {opacity: 0})
+  .from(text.text2, 3, {opacity: 0})
+  .to(text.text2, 0.5, {opacity: 0})
   .to(space.space, 0.1, {opacity: 1})
   .to(nyan.nyan, 0.1, {display: 'inline'})
-  .append([comets.comet1Tween, comets.comet2Tween, tl2, tl3]);
+  .append([comets.comet1Tween, comets.comet2Tween, tl2, tl3])
+  .add(collisions.start, 7);
 
