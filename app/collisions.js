@@ -11,12 +11,15 @@ var points = 0;
 
 var start = function(){
   window.setInterval(function() {
-    var collided = $('.nyan-cat').collision('#pizza1');
-    if(collided.length){
+    var pizzaCollided = $('.nyan-cat').collision('#pizza1');
+    var skullCollided = $('.nyan-cat').collision('#skull1');
+    if(pizzaCollided.length ){
       eatPizza();
-      updatePoints();
-      updateColor();
+      updatePoints('up');
+    } else if(skullCollided.length) {
+      updatePoints('down');
     }
+    updateColor();
   }, 250);
 };
 
@@ -25,8 +28,12 @@ var eatPizza = function() {
   TweenMax.to(pizza, 2, {display: 'inline', delay: 3});
 }
 
-var updatePoints = function() {
-  ++points;
+var updatePoints = function(direction) {
+  if(direction === 'up') {
+    ++points;
+  } else if (direction === 'down') {
+    --points;
+  }
   pointsHTML.innerHTML = points;
   updateColor(points);
 }

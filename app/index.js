@@ -9,6 +9,7 @@ var text = require('./text.js');
 var space = require('./space.js');
 var nyan = require('./nyan-cat.js');
 var pizza = require('./pizza.js');
+var skull = require('./skull.js');
 var collisions = require('./collisions.js');
 var musicControls = $('.audio');
 var score = $('#score');
@@ -52,12 +53,13 @@ tl2.to([score,musicControls], 1, {display: 'inline'})
 /* Flying pizza action */
 
 var tl3 = new TimelineMax();
-tl3.insert(pizza.pizzaTween);
+tl3.insert(pizza.pizzaTween)
+  .insert(skull.skullTween);
 
 /* Intro - two text panels, switch to space view, show nyan and comets */
 
 var tl = new TimelineMax();
-//.to(text.textContainer, 0.1, {opacity: 0})
+//tl.to(text.textContainer, 0.1, {opacity: 0})
 tl.to(text.textContainer, 1, {opacity: 1}, 0)
   .from(text.text1, 2, {opacity:0})
   .to(text.text1, 0.5, {opacity: 0})
