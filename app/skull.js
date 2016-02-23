@@ -3,7 +3,7 @@
 var $ = require('jquery');
 var skull = $('#skull1');
 
-var skullTween = TweenMax.to(skull, 2, {
+var skullTween = TweenMax.to(skull, 4, {
   display: 'inline',
   x: -1900,
   y: -300,

@@ -11,7 +11,6 @@ var points = 0;
 
 var start = function(){
   window.setInterval(function() {
-<<<<<<< HEAD
     var pizzaCollided = $('.nyan-cat').collision('#pizza1');
     var skullCollided = $('.nyan-cat').collision('#skull1');
     if(pizzaCollided.length ){
@@ -21,14 +20,6 @@ var start = function(){
       updatePoints('down');
     }
     updateColor();
-=======
-    var collided = $('.nyan-cat').collision('#pizza1');
-    if(collided.length){
-      eatPizza();
-      updatePoints();
-      updateColor();
-    }
->>>>>>> Points display with dynamic background color
   }, 250);
 };
 
@@ -37,17 +28,13 @@ var eatPizza = function() {
   TweenMax.to(pizza, 2, {display: 'inline', delay: 3});
 }
 
-<<<<<<< HEAD
 var updatePoints = function(direction) {
   if(direction === 'up') {
     ++points;
   } else if (direction === 'down') {
     --points;
+    if(points < 0) points = 0;
   }
-=======
-var updatePoints = function() {
-  ++points;
->>>>>>> Points display with dynamic background color
   pointsHTML.innerHTML = points;
   updateColor(points);
 }
